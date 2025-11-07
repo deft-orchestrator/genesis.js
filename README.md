@@ -3,8 +3,8 @@
 > A universal web-based standard library for AI-generated visual designs using Direct Code Execution (DCE)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0--alpha-blue.svg)](https://github.com/yourusername/genesis.js)
-[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/yourusername/genesis.js)
+[![Version](https://img.shields.io/badge/version-1.0.0--alpha-blue.svg)](https://github.com/deft-orchestrator/genesis.js)
+[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/deft-orchestrator/genesis.js)
 
 ---
 
@@ -53,7 +53,7 @@ Instead of AI generating pixels, Genesis.js enables AI to generate **executable 
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/genesis.js.git
+git clone https://github.com/deft-orchestrator/genesis.js.git
 cd genesis.js
 
 # Install dependencies
@@ -268,7 +268,7 @@ genesis.js/
 
 - **[API Reference](docs/api/README.md)**: Complete API documentation
 - **[Design Document](DESIGN.md)**: Comprehensive technical specification
-- **[Agent Guide](AGENT.md)**: Guide for AI agents working on this project
+- **[Agent Guide](AGENTS.md)**: Guide for AI agents working on this project
 - **[Todo List](TODO.md)**: Development progress tracker
 - **[Contributing](CONTRIBUTING.md)**: How to contribute
 
@@ -386,7 +386,7 @@ If you use Genesis.js in your research, please cite:
 @mastersthesis{genesis2025,
   author = {Qaid Haidar Adila},
   title = {Genesis.js: A Universal Standard for AI-Generated Visual Designs Using Direct Code Execution},
-  school = {Your University},
+  school = {Muhammadiyah University of Surakarta},
   year = {2025},
   type = {Master's Thesis}
 }
@@ -399,17 +399,17 @@ If you use Genesis.js in your research, please cite:
 **Project Type**: Master's Thesis / Skripsi  
 **Timeline**: 6-12 months (Nov 2024 - May 2025)  
 **Research Area**: Human-Computer Interaction, AI Systems  
-**Supervisor**: [Your Advisor Name]  
-**Institution**: [Your University]
+**Supervisor**: Not yet available
+**Institution**: Muhammadiyah University of Surakarta
 
 ---
 
 ## 📞 Contact
 
 - **Author**: Qaid Haidar Adila
-- **Email**: your.email@example.com
-- **GitHub**: [@yourusername](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- **Email**: qaidhaidaradila@gmail.com
+- **GitHub**: [@deft-orchestrator](https://github.com/deft-orchestrator)
+- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/qaidhaidaradila)
 
 ---
 
