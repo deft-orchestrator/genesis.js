@@ -49,6 +49,19 @@ Instead of AI generating pixels, Genesis.js enables AI to generate **executable 
 
 ## 🚀 Quick Start
 
+### Visual Demo
+
+To see a live demo of the library's rendering capabilities, you can run the included example. This is a great way to visually test your changes.
+
+1.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+2.  **Open your browser:**
+    Navigate to the URL provided by the Vite server (usually `http://localhost:5173`).
+
+You should see a canvas with several shapes rendered, demonstrating the `rect`, `circle`, and `ellipse` primitives.
+
 ### Installation
 
 ```bash

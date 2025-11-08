@@ -50,7 +50,7 @@ Example:
 - [x] Initialize Git repository (✓ 2025-11-07) [Agent: Manual]
 - [x] Set up package.json with dependencies (✓ 2025-11-07) [Agent: Jules]
 - [x] Configure build system (Vite/Rollup)
-- [ ] Set up ESLint and Prettier
+- [x] Set up ESLint and Prettier (✓ 2025-11-08) [Agent: Jules]
 - [ ] Configure TypeScript/JSDoc
 - [x] Set up testing framework (Vitest) (✓ 2025-11-07) [Agent: Jules]
 - [ ] Create GitHub Actions CI/CD pipeline
@@ -79,7 +79,7 @@ Example:
 
 - [x] Implement CanvasBackend class (✓ 2025-11-07) [Agent: Jules]
 - [x] Add circle rendering (✓ 2025-11-07) [Agent: Jules]
-- [ ] Add rectangle rendering
+- [x] Add rectangle rendering (✓ 2025-11-08) [Agent: Jules]
 - [ ] Add line rendering
 - [ ] Add text rendering
 - [ ] Add path rendering
@@ -610,7 +610,7 @@ These tasks are ongoing throughout the project:
 
 | Phase | Tasks | Completed | In Progress | Not Started | Progress |
 |-------|-------|-----------|-------------|-------------|----------|
-| Phase 1 | 77 | 19 | 0 | 58 | 25% |
+| Phase 1 | 77 | 21 | 0 | 56 | 27% |
 | Phase 2 | 35 | 0 | 0 | 35 | 0% |
 | Phase 3 | 48 | 0 | 0 | 48 | 0% |
 | Phase 4 | 27 | 0 | 0 | 27 | 0% |
