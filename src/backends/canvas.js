@@ -33,6 +33,9 @@ export class CanvasBackend {
       case 'rect':
         this.renderRect(element)
         break
+      case 'line':
+        this.renderLine(element)
+        break
       case 'text':
         this.renderText(element)
         break
@@ -101,6 +104,22 @@ export class CanvasBackend {
     this.ctx.textBaseline = baseline || 'alphabetic'
 
     this.ctx.fillText(text, x, y)
+  }
+
+  renderLine(element) {
+    const { x1, y1, x2, y2, stroke, strokeWidth, opacity, cap } = element;
+
+    this.ctx.globalAlpha = opacity || 1;
+    this.ctx.beginPath();
+    this.ctx.moveTo(x1, y1);
+    this.ctx.lineTo(x2, y2);
+
+    if (stroke) {
+      this.ctx.strokeStyle = stroke;
+      this.ctx.lineWidth = strokeWidth || 1;
+      this.ctx.lineCap = cap || 'butt';
+      this.ctx.stroke();
+    }
   }
 
   applyTransform(transform) {

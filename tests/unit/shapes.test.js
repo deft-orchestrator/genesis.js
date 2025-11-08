@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { circle, rectangle } from '../../src/primitives/shapes.js'
+import { circle, rectangle, line } from '../../src/primitives/shapes.js'
 
 describe('circle', () => {
   test('creates a valid circle object', () => {
@@ -60,3 +60,40 @@ describe('rectangle', () => {
     expect(rect.cornerRadius).toBe(5)
   })
 })
+
+describe('line', () => {
+  test('creates a valid line object', () => {
+    const l = line(10, 20, 100, 200, { stroke: 'blue', strokeWidth: 5 });
+    expect(l).toEqual({
+      type: 'line',
+      x1: 10,
+      y1: 20,
+      x2: 100,
+      y2: 200,
+      stroke: 'blue',
+      strokeWidth: 5,
+      opacity: 1,
+      cap: 'butt',
+    });
+  });
+
+  test('throws an error for non-finite coordinates', () => {
+    expect(() => line(NaN, 20, 100, 200)).toThrow('x1 must be a finite number');
+    expect(() => line(10, Infinity, 100, 200)).toThrow('y1 must be a finite number');
+    expect(() => line(10, 20, null, 200)).toThrow('x2 must be a finite number');
+    expect(() => line(10, 20, 100, undefined)).toThrow('y2 must be a finite number');
+  });
+
+  test('applies default values correctly', () => {
+    const l = line(0, 0, 1, 1);
+    expect(l.stroke).toBe('#000000');
+    expect(l.strokeWidth).toBe(1);
+    expect(l.opacity).toBe(1);
+    expect(l.cap).toBe('butt');
+  });
+
+  test('supports different line caps', () => {
+    const l = line(0, 0, 1, 1, { cap: 'round' });
+    expect(l.cap).toBe('round');
+  });
+});

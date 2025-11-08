@@ -59,3 +59,39 @@ export function rectangle(x, y, width, height, options = {}) {
     shadow: options.shadow || null
   }
 }
+
+/**
+ * Creates a line element
+ * @param {number} x1 - Start X coordinate
+ * @param {number} y1 - Start Y coordinate
+ * @param {number} x2 - End X coordinate
+ * @param {number} y2 - End Y coordinate
+ * @param {Object} options - Style options
+ * @returns {Object} Line element
+ */
+export function line(x1, y1, x2, y2, options = {}) {
+  if (typeof x1 !== 'number' || !isFinite(x1)) {
+    throw new Error('x1 must be a finite number');
+  }
+  if (typeof y1 !== 'number' || !isFinite(y1)) {
+    throw new Error('y1 must be a finite number');
+  }
+  if (typeof x2 !== 'number' || !isFinite(x2)) {
+    throw new Error('x2 must be a finite number');
+  }
+  if (typeof y2 !== 'number' || !isFinite(y2)) {
+    throw new Error('y2 must be a finite number');
+  }
+
+  return {
+    type: 'line',
+    x1,
+    y1,
+    x2,
+    y2,
+    stroke: options.stroke || '#000000',
+    strokeWidth: options.strokeWidth || 1,
+    opacity: options.opacity ?? 1,
+    cap: options.cap || 'butt', // butt, round, square
+  };
+}
