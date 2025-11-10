@@ -36,6 +36,9 @@ export class CanvasBackend {
       case 'rect':
         this.renderRect(element)
         break
+      case 'ellipse':
+        this.renderEllipse(element)
+        break
       case 'line':
         this.renderLine(element)
         break
@@ -94,6 +97,25 @@ export class CanvasBackend {
       this.ctx.strokeStyle = stroke
       this.ctx.lineWidth = strokeWidth || 1
       this.ctx.stroke()
+    }
+  }
+
+  renderEllipse(element) {
+    const { x, y, rx, ry, fill, stroke, strokeWidth, opacity } = element;
+
+    this.ctx.globalAlpha = opacity || 1;
+    this.ctx.beginPath();
+    this.ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+
+    if (fill) {
+      this.ctx.fillStyle = fill;
+      this.ctx.fill();
+    }
+
+    if (stroke) {
+      this.ctx.strokeStyle = stroke;
+      this.ctx.lineWidth = strokeWidth || 1;
+      this.ctx.stroke();
     }
   }
 

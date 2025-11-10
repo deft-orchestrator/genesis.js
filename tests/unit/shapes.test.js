@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { circle, rectangle, line } from '../../src/primitives/shapes.js'
+import { circle, rectangle, line, ellipse } from '../../src/primitives/shapes.js'
 
 describe('circle', () => {
   test('creates a valid circle object', () => {
@@ -95,5 +95,39 @@ describe('line', () => {
   test('supports different line caps', () => {
     const l = line(0, 0, 1, 1, { cap: 'round' });
     expect(l.cap).toBe('round');
+  });
+});
+
+describe('ellipse', () => {
+  test('creates a valid ellipse object', () => {
+    const e = ellipse(100, 150, 50, 80, { fill: 'blue' });
+    expect(e).toEqual({
+      type: 'ellipse',
+      x: 100,
+      y: 150,
+      rx: 50,
+      ry: 80,
+      fill: 'blue',
+      stroke: undefined,
+      strokeWidth: 1,
+      opacity: 1,
+    });
+  });
+
+  test('throws an error for negative radii', () => {
+    expect(() => ellipse(100, 100, -50, 80)).toThrow('rx must be a non-negative number');
+    expect(() => ellipse(100, 100, 50, -80)).toThrow('ry must be a non-negative number');
+  });
+
+  test('throws an error for non-finite coordinates', () => {
+    expect(() => ellipse(NaN, 150, 50, 80)).toThrow('x must be a finite number');
+    expect(() => ellipse(100, Infinity, 50, 80)).toThrow('y must be a finite number');
+  });
+
+  test('applies default values correctly', () => {
+    const e = ellipse(10, 20, 30, 40);
+    expect(e.fill).toBe('#000000');
+    expect(e.strokeWidth).toBe(1);
+    expect(e.opacity).toBe(1);
   });
 });
