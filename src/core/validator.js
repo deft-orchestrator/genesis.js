@@ -14,6 +14,12 @@ export class Validator {
         return this.validateText(element)
       case 'path':
         return this.validatePath(element)
+      case 'line':
+        return this.validateLine(element)
+      case 'ellipse':
+        return this.validateEllipse(element)
+      case 'polygon':
+        return this.validatePolygon(element)
       default:
         throw new Error(`Unknown element type: ${element.type}`)
     }
@@ -76,6 +82,33 @@ export class Validator {
       throw new Error('Path must have commands or points')
     }
 
+    this.validateCommonProperties(element)
+    return true
+  }
+
+  validateLine(element) {
+    if (typeof element.x1 !== 'number' || typeof element.y1 !== 'number' || typeof element.x2 !== 'number' || typeof element.y2 !== 'number') {
+      throw new Error('Line coordinates must be numbers')
+    }
+    this.validateCommonProperties(element)
+    return true
+  }
+
+  validateEllipse(element) {
+    if (typeof element.x !== 'number' || typeof element.y !== 'number' || typeof element.rx !== 'number' || typeof element.ry !== 'number') {
+      throw new Error('Ellipse properties must be numbers')
+    }
+    if (element.rx < 0 || element.ry < 0) {
+      throw new Error('Ellipse radii must be non-negative')
+    }
+    this.validateCommonProperties(element)
+    return true
+  }
+
+  validatePolygon(element) {
+    if (!Array.isArray(element.points) || element.points.length < 3) {
+      throw new Error('Polygon must have at least 3 points')
+    }
     this.validateCommonProperties(element)
     return true
   }
