@@ -20,6 +20,9 @@ export class CanvasBackend {
   renderElement(element) {
     this.ctx.save()
 
+    // Debug: log element being rendered
+    console.log('Rendering:', element.type, element);
+
     // Apply transforms
     if (element.transform) {
       this.applyTransform(element.transform)
