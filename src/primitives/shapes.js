@@ -95,3 +95,39 @@ export function line(x1, y1, x2, y2, options = {}) {
     cap: options.cap || 'butt', // butt, round, square
   };
 }
+
+/**
+ * Creates an ellipse element
+ * @param {number} x - Center X coordinate
+ * @param {number} y - Center Y coordinate
+ * @param {number} rx - Radius X (must be positive)
+ * @param {number} ry - Radius Y (must be positive)
+ * @param {Object} options - Style options
+ * @returns {Object} Ellipse element
+ */
+export function ellipse(x, y, rx, ry, options = {}) {
+  if (typeof x !== 'number' || !isFinite(x)) {
+    throw new Error('x must be a finite number');
+  }
+  if (typeof y !== 'number' || !isFinite(y)) {
+    throw new Error('y must be a finite number');
+  }
+  if (typeof rx !== 'number' || rx < 0) {
+    throw new Error('rx must be a non-negative number');
+  }
+  if (typeof ry !== 'number' || ry < 0) {
+    throw new Error('ry must be a non-negative number');
+  }
+
+  return {
+    type: 'ellipse',
+    x,
+    y,
+    rx,
+    ry,
+    fill: options.fill || '#000000',
+    stroke: options.stroke,
+    strokeWidth: options.strokeWidth || 1,
+    opacity: options.opacity ?? 1,
+  };
+}
