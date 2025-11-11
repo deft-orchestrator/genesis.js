@@ -62,4 +62,40 @@ describe('Validator', () => {
       expect(validator.isValidColor('transparent')).toBe(true)
     })
   })
+
+  describe('validateLine', () => {
+    test('should pass for a valid line', () => {
+      const validLine = { type: 'line', x1: 10, y1: 10, x2: 20, y2: 20 }
+      expect(() => validator.validateElement(validLine)).not.toThrow()
+    })
+
+    test('should throw for a line with non-numeric coordinates', () => {
+      const invalidLine = { type: 'line', x1: 10, y1: 'a', x2: 20, y2: 20 }
+      expect(() => validator.validateElement(invalidLine)).toThrow('Line coordinates must be numbers')
+    })
+  })
+
+  describe('validateEllipse', () => {
+    test('should pass for a valid ellipse', () => {
+      const validEllipse = { type: 'ellipse', x: 10, y: 10, rx: 5, ry: 8 }
+      expect(() => validator.validateElement(validEllipse)).not.toThrow()
+    })
+
+    test('should throw for an ellipse with negative radius', () => {
+      const invalidEllipse = { type: 'ellipse', x: 10, y: 10, rx: -5, ry: 8 }
+      expect(() => validator.validateElement(invalidEllipse)).toThrow('Ellipse radii must be non-negative')
+    })
+  })
+
+  describe('validatePolygon', () => {
+    test('should pass for a valid polygon', () => {
+      const validPolygon = { type: 'polygon', points: [[0, 0], [1, 1], [0, 1]] }
+      expect(() => validator.validateElement(validPolygon)).not.toThrow()
+    })
+
+    test('should throw for a polygon with less than 3 points', () => {
+      const invalidPolygon = { type: 'polygon', points: [[0, 0], [1, 1]] }
+      expect(() => validator.validateElement(invalidPolygon)).toThrow('Polygon must have at least 3 points')
+    })
+  })
 })

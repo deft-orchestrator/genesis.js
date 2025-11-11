@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { circle, rectangle, line, ellipse } from '../../src/primitives/shapes.js'
+import { circle, rectangle, line, ellipse, polygon } from '../../src/primitives/shapes.js'
 
 describe('circle', () => {
   test('creates a valid circle object', () => {
@@ -129,5 +129,33 @@ describe('ellipse', () => {
     expect(e.fill).toBe('#000000');
     expect(e.strokeWidth).toBe(1);
     expect(e.opacity).toBe(1);
+  });
+});
+
+describe('polygon', () => {
+  test('creates a valid polygon object', () => {
+    const points = [[0, 0], [50, 0], [25, 50]];
+    const p = polygon(points, { fill: 'green' });
+    expect(p).toEqual({
+      type: 'polygon',
+      points,
+      fill: 'green',
+      stroke: undefined,
+      strokeWidth: 1,
+      opacity: 1,
+    });
+  });
+
+  test('throws an error for less than 3 points', () => {
+    const points = [[0, 0], [50, 0]];
+    expect(() => polygon(points)).toThrow('Polygon must have at least 3 points');
+  });
+
+  test('applies default values correctly', () => {
+    const points = [[0, 0], [50, 0], [25, 50]];
+    const p = polygon(points);
+    expect(p.fill).toBe('#000000');
+    expect(p.strokeWidth).toBe(1);
+    expect(p.opacity).toBe(1);
   });
 });

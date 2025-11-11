@@ -1,14 +1,7 @@
-import * as shapes from './primitives/shapes.js';
-import { Renderer } from './core/renderer.js';
+// src/index.js
+import { Genesis } from './genesis.js';
 
-const scene = [];
+const genesis = new Genesis();
 
-const api = {
-  ...shapes,
-};
-
-export default {
-  api,
-  renderer: new Renderer({ backend: 'canvas' }),
-  scene,
-};
+export default genesis;
+export { Genesis };

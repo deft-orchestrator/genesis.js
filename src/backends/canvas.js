@@ -51,6 +51,9 @@ export class CanvasBackend {
       case 'group':
         element.children.forEach(child => this.renderElement(child))
         break
+      case 'polygon':
+        this.renderPolygon(element)
+        break
     }
 
     this.ctx.restore()
@@ -144,6 +147,30 @@ export class CanvasBackend {
       this.ctx.lineWidth = strokeWidth || 1;
       this.ctx.lineCap = cap || 'butt';
       this.ctx.stroke();
+    }
+  }
+
+  renderPolygon(element) {
+    const { points, fill, stroke, strokeWidth, opacity } = element
+
+    this.ctx.globalAlpha = opacity || 1
+    this.ctx.beginPath()
+
+    this.ctx.moveTo(points[0][0], points[0][1])
+    for (let i = 1; i < points.length; i++) {
+      this.ctx.lineTo(points[i][0], points[i][1])
+    }
+    this.ctx.closePath()
+
+    if (fill) {
+      this.ctx.fillStyle = fill
+      this.ctx.fill()
+    }
+
+    if (stroke) {
+      this.ctx.strokeStyle = stroke
+      this.ctx.lineWidth = strokeWidth || 1
+      this.ctx.stroke()
     }
   }
 

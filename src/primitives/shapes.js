@@ -131,3 +131,24 @@ export function ellipse(x, y, rx, ry, options = {}) {
     opacity: options.opacity ?? 1,
   };
 }
+
+/**
+ * Creates a polygon element
+ * @param {Array<Array<number>>} points - Array of points [[x1, y1], [x2, y2], ...]
+ * @param {Object} options - Style options
+ * @returns {Object} Polygon element
+ */
+export function polygon(points, options = {}) {
+  if (!Array.isArray(points) || points.length < 3) {
+    throw new Error('Polygon must have at least 3 points');
+  }
+
+  return {
+    type: 'polygon',
+    points,
+    fill: options.fill || '#000000',
+    stroke: options.stroke,
+    strokeWidth: options.strokeWidth || 1,
+    opacity: options.opacity ?? 1,
+  };
+}
